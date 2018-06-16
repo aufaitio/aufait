@@ -1,6 +1,4 @@
-## Au Fait
-
-The NPM dependency management tool for everyone! This is still under development. You can watch our progress and anticipate the initial release. Projected release date will be posted here when known.
+The NPM dependency management tool for everyone! This is still under development. Please watch our progress. Projected release date coming soon!
 
 ### Development (I live a lonely life)
 
