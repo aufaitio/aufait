@@ -1,12 +1,12 @@
 MAIN_VERSION:=$(shell git describe --abbrev=0 --tags || echo "0.1.0")
 VERSION:=${MAIN_VERSION}\#$(shell git log -n 1 --pretty=format:"%h")
 PACKAGES:=$(shell go list ./... | sed -n '1!p' | grep -v /vendor/)
-LDFLAGS:=-ldflags "-X github.com/aufaitio/aufait/app.Version=${VERSION}"
+LDFLAGS:=-ldflags "-X github.com/quantumew/aufait/app.Version=${VERSION}"
 
 default: run
 
 depends:
-	../../../../bin/glide up
+	go get .
 
 test:
 	echo "mode: count" > coverage-all.out

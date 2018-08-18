@@ -1,0 +1,12 @@
+[submodule "builder"]
+	path = builder
+	url = git@github.com:quantumew/builder.git
+[submodule "listener"]
+	path = listener
+	url = git@github.com:quantumew/listener.git
+[submodule "data-access"]
+	path = data-access
+	url = git@github.com:quantumew/data-access.git
+[submodule "plugins"]
+	path = plugins
+	url = git@github.com:quantumew/plugins.git
