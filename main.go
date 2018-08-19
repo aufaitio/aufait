@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/aufaitio/aufait/app"
+	"github.com/quantumew/aufait/app"
 	"github.com/docopt/docopt-go"
 )
 
@@ -14,7 +14,7 @@ func main() {
 Command line interface that assists in setting up Au Fait, the tool that keeps your NPM projects up to date. Set it and forget it (pre)
 
 Usage:
-	aufait <repository>... 
+	aufait <repository>...
 Options:
 	-h --help			Show this message
 	--version			Show version info

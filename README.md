@@ -32,7 +32,7 @@ We are building a GreenKeeper.io (cap tipped) like tool that works with more ser
 
 ### Getting Started (under development)
 
-* [Install the aufait command line utility](https://github.com/aufaitio/aufait/releases).
+* [Install the aufait command line utility](https://github.com/quantumew/aufait/releases).
 * Point it to repositories it should manage. It will setup Git WebHooks to ensure it stays up to date!
 * Follow prompts to configure repository (this step is skipped when config is present).
 * Setup any private NPM registries. (Instructions to come)
