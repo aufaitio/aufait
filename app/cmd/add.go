@@ -24,7 +24,7 @@ func init() {
 	addCmd.PersistentFlags().StringVarP(&path, "path", "p", ".", "Configure a local repositories")
 	addCmd.PersistentFlags().StringVarP(&remote, "remote", "r", "", "Override the default remote")
 	addCmd.PersistentFlags().StringVarP(&remoteName, "remote-name", "n", "origin", "Override the default origin remote name")
-	addCmd.PersistentFlags().StringVarP(&branch, "branch", "b", "", "Override the output of git branch")
+	addCmd.PersistentFlags().StringVarP(&branch, "branch", "b", "master", "Override the output of git branch")
 	addCmd.PersistentFlags().StringVarP(&listenerURL, "url", "u", "https://quantumew.github.io/aufait/", "Override the output of git branch")
 }
 

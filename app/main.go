@@ -58,6 +58,7 @@ func (cli CLI) ConfigureLocalRepository(repoPath string, remote string, branch s
 	// Load repo files and configure
 	lockFilePath := path.Join(repoPath, "package-lock.json")
 	pkgFilePath := path.Join(repoPath, "package.json")
+	configFilePath := path.Join(repoPath, ".aufait.json")
 
 	rawPkg, err := ioutil.ReadFile(pkgFilePath)
 
@@ -76,17 +77,6 @@ func (cli CLI) ConfigureLocalRepository(repoPath string, remote string, branch s
 		json.Unmarshal(rawLock, &lock)
 	}
 
-	if len(branch) < 1 {
-		rawBranch, err := exec.Command("git", "-C", repoPath, "branch").Output()
-
-		if err != nil {
-			return fmt.Errorf("Failed to retrieve branch for git repository %s", repoPath)
-		}
-
-		// Remove the asterisk and empty spaces
-		branch = strings.Trim(string(rawBranch[:]), "* ")
-	}
-
 	if len(remote) < 1 {
 		rawRemote, err := exec.Command("git", "-C", repoPath, "remote", "get-url", remoteName).Output()
 
@@ -94,14 +84,25 @@ func (cli CLI) ConfigureLocalRepository(repoPath string, remote string, branch s
 			return fmt.Errorf("Failed to retrieve remote for git repository %s", repoPath)
 		}
 
-		remote = strings.Trim(string(rawRemote[:]), " ")
+		remote = strings.Trim(string(rawRemote[:]), " \n")
 	}
 
 	repo, err := cli.buildRepositoryConfig(pkg, lock, branch, remote)
 
 	if err != nil {
-		// Keep going and configure as many as possible
 		return err
+	}
+
+	jsonPayload, err := json.Marshal(repo)
+
+	if err != nil {
+		return fmt.Errorf("Failed to marshal JSON for Au Fait config %s", repoPath)
+	}
+
+	err = ioutil.WriteFile(configFilePath, jsonPayload, 0644)
+
+	if err != nil {
+		return fmt.Errorf("Failed to write aufait config file for %s", repoPath)
 	}
 
 	return cli.ConfigureRepositories([]*models.Repository{repo})
