@@ -1,16 +1,16 @@
 [submodule "builder"]
 	path = builder
-	url = git@github.com:quantumew/builder.git
+	url = https://github.com/quantumew/builder.git
 	branch = master
 [submodule "listener"]
 	path = listener
-	url = git@github.com:quantumew/listener.git
+	url = https://github.com/quantumew/listener.git
 	branch = master
 [submodule "data-access"]
 	path = data-access
-	url = git@github.com:quantumew/data-access.git
+	url = https://github.com/quantumew/data-access.git
 	branch = master
 [submodule "plugins"]
 	path = plugins
-	url = git@github.com:quantumew/plugins.git
+	url = https://github.com/quantumew/plugins.git
 	branch = master
