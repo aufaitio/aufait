@@ -1,0 +1,29 @@
+version: 3
+services:
+  builder:
+    image: aufait-builder
+    context: ./builder
+    dockerfile: Dockerfile
+    dependes_on:
+      - db 
+    links:
+      - db
+    cache:
+      - alpine:latest
+  listener:
+    image: aufait-listener
+    context: ./listener
+    dockerfile: Dockerfile
+    dependes_on:
+      - db 
+    links:
+      - db
+    cache:
+      - alpine:latest
+    ports:
+      - "8080:8080"
+  db:
+    image: mongo:alpine
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles
